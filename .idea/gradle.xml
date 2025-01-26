@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/api" />
+            <option value="$PROJECT_DIR$/impl203" />
+            <option value="$PROJECT_DIR$/impl211" />
+            <option value="$PROJECT_DIR$/impl212" />
+            <option value="$PROJECT_DIR$/impl213" />
+            <option value="$PROJECT_DIR$/impl222" />
+            <option value="$PROJECT_DIR$/impl223" />
+            <option value="$PROJECT_DIR$/impl232" />
+            <option value="$PROJECT_DIR$/impl233" />
+            <option value="$PROJECT_DIR$/impl241" />
+            <option value="$PROJECT_DIR$/impl243" />
+            <option value="$PROJECT_DIR$/lib" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
