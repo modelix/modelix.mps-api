@@ -26,7 +26,7 @@ val mpsVersions = mapOf<Int, String>(
     232 to "2023.2.2",
     233 to "2023.3.2",
     241 to "2024.1.1",
-    243 to "2024.3"
+    243 to "2024.3",
 )
 
 var previousMajorVersions_: List<Int> = emptyList()
@@ -36,6 +36,7 @@ for ((majorVersion, fullVersion) in mpsVersions) {
     rootProject.dependencies {
         mpsZip("com.jetbrains:mps:$fullVersion")
     }
+
     project("impl$majorVersion") {
         apply(plugin = "org.jetbrains.kotlin.jvm")
         val mpsDir = layout.buildDirectory.dir("mps")
@@ -54,7 +55,7 @@ for ((majorVersion, fullVersion) in mpsVersions) {
             "compileOnly"(
                 fileTree(mpsDir).matching {
                     include("lib/*.jar")
-                }
+                },
             )
         }
 
@@ -64,6 +65,7 @@ for ((majorVersion, fullVersion) in mpsVersions) {
             }
         }
     }
+
     previousMajorVersions_ += majorVersion
 }
 
@@ -76,7 +78,7 @@ project(":lib") {
         "compileOnly"(
             fileTree(project.project(":impl${mpsVersions.keys.last()}").layout.buildDirectory.dir("mps")).matching {
                 include("lib/*.jar")
-            }
+            },
         )
     }
 }
@@ -87,7 +89,7 @@ project(":api") {
         "compileOnly"(
             fileTree(project.project(":impl${mpsVersions.keys.last()}").layout.buildDirectory.dir("mps")).matching {
                 include("lib/*.jar")
-            }
+            },
         )
     }
 }

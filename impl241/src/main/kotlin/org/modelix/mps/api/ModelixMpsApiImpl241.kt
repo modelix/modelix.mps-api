@@ -1,4 +1,3 @@
 package org.modelix.mps.api
 
-open class ModelixMpsApiImpl241 : ModelixMpsApiImpl233() {
-}
+open class ModelixMpsApiImpl241 : ModelixMpsApiImpl233()
