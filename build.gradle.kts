@@ -5,26 +5,10 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
 
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
-    alias(libs.plugins.gitVersion)
 }
 
-version = computeVersion()
+version = file("version.txt").takeIf { it.exists() }?.readText()?.trim() ?: "0.0.1-SNAPSHOT"
 println("Version: $version")
-
-fun computeVersion(): Any {
-    val versionFile = file("version.txt")
-    val gitVersion: groovy.lang.Closure<String> by extra
-    return if (versionFile.exists()) {
-        versionFile.readText().trim()
-    } else {
-        gitVersion()
-            // Avoid duplicated "-SNAPSHOT" ending
-            .let { if (it.endsWith("-SNAPSHOT")) it else "$it-SNAPSHOT" }
-            // Normalize the version so that is always a valid NPM version.
-            .let { if (it.matches("""\d+\.\d+.\d+-.*""".toRegex())) it else "0.0.1-$it" }
-            .also { versionFile.writeText(it) }
-    }
-}
 
 allprojects {
     repositories {
