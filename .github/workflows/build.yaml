@@ -23,7 +23,7 @@ jobs:
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew build -PciBuild=true -Pgpr.token=${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew build publishToMavenLocal -PciBuild=true -Pgpr.token=${{ secrets.GITHUB_TOKEN }}
       - name: Archive test report
         uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
         if: always()
