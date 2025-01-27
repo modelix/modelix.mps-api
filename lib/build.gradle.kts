@@ -40,9 +40,11 @@ publishing {
             group = "org.modelix.mps"
             artifactId = "stable-api"
             version = "0.0.3"
-            // artifact(tasks.shadowJar)
-            artifact(project(":api").tasks.named("sourcesJar"))
             from(components["shadow"])
         }
     }
+}
+
+tasks.named("generateMetadataFileForMavenPublication") {
+    dependsOn(tasks.jar)
 }
