@@ -13,9 +13,9 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
 
     override fun getVirtualFolder(
         project: Project,
-        module: SModule
+        module: SModule,
     ): String? {
-        return (project as MPSProject).getPath(module)?.virtualFolder
+        return (project as MPSProject).getPath(module)?.virtualFolder?.takeIf { it.isNotEmpty() }
     }
 
     override fun fixVersions(project: Project, module: SModule) {

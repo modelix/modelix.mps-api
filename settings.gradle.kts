@@ -18,7 +18,7 @@ val mpsVersions = mapOf<Int, String>(
     232 to "2023.2.2",
     233 to "2023.3.2",
     241 to "2024.1.1",
-    243 to "2024.3"
+    243 to "2024.3",
 )
 
 for (majorVersion in mpsVersions.keys) {

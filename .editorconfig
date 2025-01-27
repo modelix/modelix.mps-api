@@ -1,0 +1,10 @@
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.kt]
+ktlint_standard_filename = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
