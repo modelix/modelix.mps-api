@@ -2,3 +2,5 @@
 .kotlin
 build
 */build
+node_modules
+version.txt
