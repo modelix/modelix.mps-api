@@ -20,6 +20,16 @@
             <option value="$PROJECT_DIR$/impl241" />
             <option value="$PROJECT_DIR$/impl243" />
             <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/test/203" />
+            <option value="$PROJECT_DIR$/test/211" />
+            <option value="$PROJECT_DIR$/test/212" />
+            <option value="$PROJECT_DIR$/test/213" />
+            <option value="$PROJECT_DIR$/test/222" />
+            <option value="$PROJECT_DIR$/test/223" />
+            <option value="$PROJECT_DIR$/test/232" />
+            <option value="$PROJECT_DIR$/test/233" />
+            <option value="$PROJECT_DIR$/test/241" />
           </set>
         </option>
       </GradleProjectSettings>
