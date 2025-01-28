@@ -9,6 +9,10 @@ import jetbrains.mps.openapi.editor.EditorContext
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.ProjectManager
 import jetbrains.mps.smodel.MPSModuleRepository
+import jetbrains.mps.smodel.SReference
+import org.jetbrains.mps.openapi.language.SReferenceLink
+import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.model.SNodeReference
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.project.Project
@@ -59,5 +63,9 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
 
     override fun fixVersions(project: Project, module: SModule) {
         VersionFixer(project as jetbrains.mps.project.Project, module, true).updateImportVersions()
+    }
+
+    override fun setReference(node: SNode, link: SReferenceLink, target: SNodeReference) {
+        SReference.create(link, node, target, null)
     }
 }
