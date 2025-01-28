@@ -6,7 +6,7 @@ import jetbrains.mps.ide.MPSCoreComponents
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.lang.migration.runtime.base.VersionFixer
 import jetbrains.mps.openapi.editor.EditorContext
-import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.ProjectBase
 import jetbrains.mps.project.ProjectManager
 import jetbrains.mps.smodel.MPSModuleRepository
 import jetbrains.mps.smodel.SReference
@@ -30,7 +30,15 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
         project: Project,
         module: SModule,
     ): String? {
-        return (project as MPSProject).getPath(module)?.virtualFolder?.takeIf { it.isNotEmpty() }
+        return (project as ProjectBase).getPath(module)?.virtualFolder?.takeIf { it.isNotEmpty() }
+    }
+
+    override fun setVirtualFolder(project: Project, module: SModule, folder: String?) {
+        (project as ProjectBase).setVirtualFolder(module, folder)
+    }
+
+    override fun setVirtualFolder(module: SModule, folder: String?) {
+        getMPSProjects().filter { it.projectModules.contains(module) }.forEach { setVirtualFolder(it, module, folder) }
     }
 
     override fun getGlobalRepository(): SRepository {

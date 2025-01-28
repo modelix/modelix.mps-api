@@ -25,6 +25,8 @@ interface IModelixMpsApi {
         getVirtualFolder(it, module).takeIf { !it.isNullOrEmpty() }
     }
     fun getVirtualFolder(module: SModule): String? = getVirtualFolders(module).firstOrNull()
+    fun setVirtualFolder(project: Project, module: SModule, folder: String?)
+    fun setVirtualFolder(module: SModule, folder: String?)
 
     fun fixVersions(project: Project, module: SModule)
 
