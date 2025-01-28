@@ -17,6 +17,8 @@ java {
     withSourcesJar()
 }
 
+version = rootProject.version
+
 publishing {
     repositories {
         if (project.hasProperty("artifacts.itemis.cloud.user")) {
@@ -39,7 +41,6 @@ publishing {
         create<MavenPublication>("maven") {
             group = "org.modelix.mps"
             artifactId = "stable-api"
-            version = "0.0.3"
             from(components["shadow"])
         }
     }
