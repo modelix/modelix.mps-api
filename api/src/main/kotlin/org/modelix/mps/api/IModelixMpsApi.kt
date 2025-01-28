@@ -2,6 +2,7 @@ package org.modelix.mps.api
 
 import jetbrains.mps.openapi.editor.EditorContext
 import org.jetbrains.mps.openapi.language.SReferenceLink
+import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeReference
 import org.jetbrains.mps.openapi.module.SModule
@@ -28,4 +29,6 @@ interface IModelixMpsApi {
     fun fixVersions(project: Project, module: SModule)
 
     fun setReference(node: SNode, link: SReferenceLink, target: SNodeReference)
+
+    fun forceSave(model: SModel)
 }
