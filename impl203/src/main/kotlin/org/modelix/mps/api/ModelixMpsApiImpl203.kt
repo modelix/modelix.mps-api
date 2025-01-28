@@ -11,8 +11,11 @@ import jetbrains.mps.project.ProjectManager
 import jetbrains.mps.smodel.MPSModuleRepository
 import jetbrains.mps.smodel.SReference
 import org.jetbrains.mps.openapi.language.SReferenceLink
+import org.jetbrains.mps.openapi.model.EditableSModel
+import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeReference
+import org.jetbrains.mps.openapi.model.SaveOptions
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.project.Project
@@ -67,5 +70,10 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
 
     override fun setReference(node: SNode, link: SReferenceLink, target: SNodeReference) {
         SReference.create(link, node, target, null)
+    }
+
+    override fun forceSave(model: SModel) {
+        if (model !is EditableSModel) return
+        model.save(SaveOptions.FORCE)
     }
 }
