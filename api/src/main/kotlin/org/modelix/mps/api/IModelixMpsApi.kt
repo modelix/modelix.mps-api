@@ -20,6 +20,7 @@ interface IModelixMpsApi {
     fun getRepository(awtComponent: Component): SRepository
 
     fun getMPSProjects(): List<Project>
+    fun getMPSProject(): Project = getMPSProjects().first()
     fun getVirtualFolder(project: Project, module: SModule): String?
     fun getVirtualFolders(module: SModule): List<String> = getMPSProjects().mapNotNull {
         getVirtualFolder(it, module).takeIf { !it.isNullOrEmpty() }

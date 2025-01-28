@@ -4,6 +4,7 @@ public final class org/modelix/mps/api/ModelixMpsApi : org/modelix/mps/api/IMode
 	public fun forceSave (Lorg/jetbrains/mps/openapi/model/SModel;)V
 	public fun getGlobalRepository ()Lorg/jetbrains/mps/openapi/module/SRepository;
 	public fun getIdeaProject (Lorg/jetbrains/mps/openapi/project/Project;)Lcom/intellij/openapi/project/Project;
+	public fun getMPSProject ()Lorg/jetbrains/mps/openapi/project/Project;
 	public fun getMPSProject (Lcom/intellij/openapi/project/Project;)Lorg/jetbrains/mps/openapi/project/Project;
 	public fun getMPSProjects ()Ljava/util/List;
 	public fun getProjectRepository ()Lorg/jetbrains/mps/openapi/module/SRepository;
