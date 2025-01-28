@@ -31,4 +31,10 @@ interface IModelixMpsApi {
     fun setReference(node: SNode, link: SReferenceLink, target: SNodeReference)
 
     fun forceSave(model: SModel)
+
+    fun getIdeaProject(project: Project): com.intellij.openapi.project.Project
+    fun getMPSProject(project: com.intellij.openapi.project.Project): Project
+    fun <R> runWithProject(project: Project, body: () -> R): R =
+        ContextProject.runWith(project, body)
+    fun <R> runWithProject(project: com.intellij.openapi.project.Project, body: () -> R): R = runWithProject(getMPSProject(project), body)
 }
