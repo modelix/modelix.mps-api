@@ -4,7 +4,7 @@ import com.intellij.openapi.application.ApplicationInfo
 
 private fun detectMpsVersion(): Int {
     val info = ApplicationInfo.getInstance()
-    return info.majorVersion.toInt() - 2000 + info.minorVersionMainPart.toInt()
+    return (info.majorVersion.toInt() - 2000) * 10 + info.minorVersionMainPart.toInt()
 }
 
 private fun resolveInstance(): IModelixMpsApi {
