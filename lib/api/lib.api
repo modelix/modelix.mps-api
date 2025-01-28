@@ -1,9 +1,9 @@
 public final class org/modelix/mps/api/ModelixMpsApi : org/modelix/mps/api/IModelixMpsApi {
 	public static final field INSTANCE Lorg/modelix/mps/api/ModelixMpsApi;
-	public fun fixVersions (Ljetbrains/mps/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)V
+	public fun fixVersions (Lorg/jetbrains/mps/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)V
 	public fun getMPSProjects ()Ljava/util/List;
-	public fun getVirtualFolder (Ljetbrains/mps/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
+	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolders (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/List;
 }
 

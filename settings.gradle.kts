@@ -6,6 +6,7 @@ plugins {
 rootProject.name = "modelix.mps-api"
 include("api")
 include("lib")
+include("test")
 
 // https://artifacts.itemis.cloud/service/rest/repository/browse/maven-mps/com/jetbrains/mps/
 val mpsVersions = mapOf<Int, String>(
@@ -23,4 +24,7 @@ val mpsVersions = mapOf<Int, String>(
 
 for (majorVersion in mpsVersions.keys) {
     include("impl$majorVersion")
+    if (majorVersion < 242) { // MPS is not yet compatible with the new intellij plugin
+        include(":test:$majorVersion")
+    }
 }

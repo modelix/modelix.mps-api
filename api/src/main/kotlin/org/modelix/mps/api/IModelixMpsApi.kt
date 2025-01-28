@@ -1,7 +1,7 @@
 package org.modelix.mps.api
 
-import jetbrains.mps.project.Project
 import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.project.Project
 
 interface IModelixMpsApi {
     fun getMPSProjects(): List<Project>

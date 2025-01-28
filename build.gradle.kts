@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
 
@@ -49,6 +47,13 @@ for ((majorVersion, fullVersion) in mpsVersions) {
                 into(mpsDir)
             }
         }
+        // The build number of a local IDE is expected to contain a product code, otherwise an exception is thrown.
+        val buildTxt = mpsDir.get().asFile.resolve("build.txt")
+        val buildNumber = buildTxt.readText()
+        val prefix = "MPS-"
+        if (!buildNumber.startsWith(prefix)) {
+            buildTxt.writeText("$prefix$buildNumber")
+        }
 
         dependencies {
             "implementation"(project(":api"))
@@ -65,6 +70,15 @@ for ((majorVersion, fullVersion) in mpsVersions) {
         plugins.withType<KotlinPlatformJvmPlugin> {
             extensions.configure<KotlinJvmProjectExtension> {
                 jvmToolchain(11)
+            }
+        }
+    }
+
+    if (majorVersion < 242) { // MPS is not yet compatible with the new intellij plugin
+        project(":test:$majorVersion") {
+            apply(plugin = "org.jetbrains.kotlin.jvm")
+            tasks.named("test") {
+                dependsOn(":lib:shadowJar")
             }
         }
     }
