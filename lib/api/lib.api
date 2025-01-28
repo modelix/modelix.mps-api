@@ -3,6 +3,8 @@ public final class org/modelix/mps/api/ModelixMpsApi : org/modelix/mps/api/IMode
 	public fun fixVersions (Lorg/jetbrains/mps/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)V
 	public fun forceSave (Lorg/jetbrains/mps/openapi/model/SModel;)V
 	public fun getGlobalRepository ()Lorg/jetbrains/mps/openapi/module/SRepository;
+	public fun getIdeaProject (Lorg/jetbrains/mps/openapi/project/Project;)Lcom/intellij/openapi/project/Project;
+	public fun getMPSProject (Lcom/intellij/openapi/project/Project;)Lorg/jetbrains/mps/openapi/project/Project;
 	public fun getMPSProjects ()Ljava/util/List;
 	public fun getProjectRepository ()Lorg/jetbrains/mps/openapi/module/SRepository;
 	public fun getRepository ()Lorg/jetbrains/mps/openapi/module/SRepository;
@@ -13,6 +15,8 @@ public final class org/modelix/mps/api/ModelixMpsApi : org/modelix/mps/api/IMode
 	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolders (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/List;
+	public fun runWithProject (Lcom/intellij/openapi/project/Project;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	public fun runWithProject (Lorg/jetbrains/mps/openapi/project/Project;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
 	public fun setReference (Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;Lorg/jetbrains/mps/openapi/model/SNodeReference;)V
 }
 

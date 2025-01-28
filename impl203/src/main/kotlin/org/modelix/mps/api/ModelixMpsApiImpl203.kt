@@ -23,7 +23,7 @@ import java.awt.Component
 
 open class ModelixMpsApiImpl203 : IModelixMpsApi {
     override fun getMPSProjects(): List<Project> {
-        return ProjectManager.getInstance().openedProjects
+        return (listOfNotNull(ContextProject.getProject()) + ProjectManager.getInstance().openedProjects).distinct()
     }
 
     override fun getVirtualFolder(
@@ -48,7 +48,7 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
     }
 
     override fun getRepository(project: com.intellij.openapi.project.Project): SRepository {
-        return getRepository(checkNotNull(ProjectHelper.fromIdeaProject(project)) { "No MPS project found in $project" })
+        return getRepository(getMPSProject(project))
     }
 
     override fun getRepository(editorContext: EditorContext): SRepository {
@@ -75,5 +75,15 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
     override fun forceSave(model: SModel) {
         if (model !is EditableSModel) return
         model.save(SaveOptions.FORCE)
+    }
+
+    override fun getIdeaProject(project: Project): com.intellij.openapi.project.Project {
+        return ProjectHelper.toIdeaProject(project as jetbrains.mps.project.Project)
+    }
+
+    override fun getMPSProject(project: com.intellij.openapi.project.Project): Project {
+        return checkNotNull(ProjectHelper.fromIdeaProject(project)) {
+            "No MPS project found in $project"
+        }
     }
 }
