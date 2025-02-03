@@ -19,6 +19,10 @@ java {
 
 version = rootProject.version
 
+kotlin {
+    jvmToolchain(11)
+}
+
 publishing {
     repositories {
         if (project.hasProperty("artifacts.itemis.cloud.user")) {

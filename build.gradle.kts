@@ -1,7 +1,4 @@
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
+import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
@@ -62,10 +59,8 @@ for ((majorVersion, fullVersion) in mpsVersions) {
             )
         }
 
-        plugins.withType<KotlinPlatformJvmPlugin> {
-            extensions.configure<KotlinJvmProjectExtension> {
-                jvmToolchain(11)
-            }
+        kotlinExtension.apply {
+            jvmToolchain(11)
         }
     }
 
