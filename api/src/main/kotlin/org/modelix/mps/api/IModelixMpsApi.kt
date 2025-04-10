@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.project.Project
 import java.awt.Component
 
 interface IModelixMpsApi {
-    fun getRepository(): SRepository = getProjectRepository() ?: getGlobalRepository()
+    fun getRepository(): SRepository = ContextRepository.getRepository() ?: getProjectRepository() ?: getGlobalRepository()
     fun getGlobalRepository(): SRepository
     fun getProjectRepository(): SRepository?
     fun getRepository(project: Project): SRepository
@@ -40,4 +40,5 @@ interface IModelixMpsApi {
     fun <R> runWithProject(project: Project, body: () -> R): R =
         ContextProject.runWith(project, body)
     fun <R> runWithProject(project: com.intellij.openapi.project.Project, body: () -> R): R = runWithProject(getMPSProject(project), body)
+    fun <R> runWithRepository(repository: SRepository, body: () -> R): R = ContextRepository.runWith(repository, body)
 }
