@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.project.Project
 import java.awt.Component
+import javax.swing.Icon
 
 interface IModelixMpsApi {
     fun getRepository(): SRepository = ContextRepository.getRepository() ?: getProjectRepository() ?: getGlobalRepository()
@@ -41,4 +42,6 @@ interface IModelixMpsApi {
         ContextProject.runWith(project, body)
     fun <R> runWithProject(project: com.intellij.openapi.project.Project, body: () -> R): R = runWithProject(getMPSProject(project), body)
     fun <R> runWithRepository(repository: SRepository, body: () -> R): R = ContextRepository.runWith(repository, body)
+
+    fun loadIcon(resourceName: String, contextClass: Class<*>): Icon
 }
