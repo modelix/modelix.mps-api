@@ -2,6 +2,7 @@ package org.modelix.mps.api
 
 import com.intellij.openapi.wm.IdeFrame
 import com.intellij.ui.ComponentUtil
+import com.intellij.ui.IconManager
 import jetbrains.mps.ide.MPSCoreComponents
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.lang.migration.runtime.base.VersionFixer
@@ -20,6 +21,7 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.project.Project
 import java.awt.Component
+import javax.swing.Icon
 
 open class ModelixMpsApiImpl203 : IModelixMpsApi {
     override fun getMPSProjects(): List<Project> {
@@ -93,5 +95,9 @@ open class ModelixMpsApiImpl203 : IModelixMpsApi {
         return checkNotNull(ProjectHelper.fromIdeaProject(project)) {
             "No MPS project found in $project"
         }
+    }
+
+    override fun loadIcon(resourceName: String, contextClass: Class<*>): Icon {
+        return IconManager.getInstance().getIcon(resourceName, contextClass)
     }
 }
