@@ -1,15 +1,23 @@
 package org.modelix.mps.api
 
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.openapi.application.ApplicationInfo
+import com.intellij.openapi.extensions.PluginId
 
 private fun detectMpsVersion(): Int {
+    PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.core"))
+        ?.version
+        ?.substringBefore(".")
+        ?.toInt()
+        ?.let { return it }
+
     val info = ApplicationInfo.getInstance()
     return (info.majorVersion.toInt() - 2000) * 10 + info.minorVersionMainPart.toInt()
 }
 
 private fun resolveInstance(): IModelixMpsApi {
     val mpsVersion = detectMpsVersion()
-    when (mpsVersion) {
+    return when (mpsVersion) {
         203 -> ModelixMpsApiImpl203()
         211 -> ModelixMpsApiImpl211()
         212 -> ModelixMpsApiImpl212()
@@ -22,8 +30,6 @@ private fun resolveInstance(): IModelixMpsApi {
         243 -> ModelixMpsApiImpl243()
         else -> throw UnsupportedOperationException("Unsupported MPS version: $mpsVersion")
     }
-    return Class.forName("org.modelix.mps.api.ModelixMpsApiImpl${detectMpsVersion()}")
-        .constructors.single().newInstance() as IModelixMpsApi
 }
 
 object ModelixMpsApi : IModelixMpsApi by resolveInstance()
