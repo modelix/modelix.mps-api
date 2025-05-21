@@ -16,6 +16,7 @@ public final class org/modelix/mps/api/ModelixMpsApi : org/modelix/mps/api/IMode
 	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolder (Lorg/jetbrains/mps/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;
 	public fun getVirtualFolders (Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/List;
+	public fun loadIcon (Ljava/lang/String;Ljava/lang/Class;)Ljavax/swing/Icon;
 	public fun runWithProject (Lcom/intellij/openapi/project/Project;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
 	public fun runWithProject (Lorg/jetbrains/mps/openapi/project/Project;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
 	public fun runWithRepository (Lorg/jetbrains/mps/openapi/module/SRepository;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
