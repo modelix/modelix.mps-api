@@ -29,6 +29,7 @@ private fun resolveInstance(): IModelixMpsApi {
         241 -> ModelixMpsApiImpl241()
         243 -> ModelixMpsApiImpl243()
         251 -> ModelixMpsApiImpl251()
+        261 -> ModelixMpsApiImpl261()
         else -> throw UnsupportedOperationException("Unsupported MPS version: $mpsVersion")
     }
 }
