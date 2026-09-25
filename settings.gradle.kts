@@ -20,6 +20,7 @@ val mpsVersions = mapOf<Int, String>(
     241 to "2024.1.1",
     243 to "2024.3",
     251 to "2025.1.2",
+    261 to "2026.1.1",
 )
 
 for (majorVersion in mpsVersions.keys) {
